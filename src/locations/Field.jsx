@@ -6,7 +6,7 @@ import useSWR from "swr";
 import SplitExperiments from "../components/SplitExperiments";
 const Field = () => {
   const [splitExp, setSplitExp] = useState([]);
-const sdk = useSDK();
+  const sdk = useSDK();
   /*
      To use the cma, inject it as follows.
      If it is not needed, you can remove the next line.
@@ -14,7 +14,7 @@ const sdk = useSDK();
      
   */
  
- 
+ // const [value, setValue] = useFieldValue('slug', 'en-US');
  const workspaceId = "ff211590-acc0-11ed-b267-ee0a963b46a9";
  const baseURL = "https://api.split.io/internal/api/v2/splits";
  const getDefinitionUrl = `/ws/${workspaceId}/asb_flag/environments/Local-Default`
@@ -28,44 +28,30 @@ const sdk = useSDK();
   console.log("data: ", data)
   console.log("error: ", error)
   console.log("isloading: ", isLoading)
-
+  
+ const CONTENT_FIELD_ID = "test"; 
+ const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
+ console.log('test content field:', contentField);
+  
 useEffect(() => {
   if (data && data.length && data[0]?.name) { 
-      setSplitExp(data)
+    setSplitExp(data)
+    contentField.setValue(data[0]?.name);
+    console.log('value to set:', data[0]?.name)
   }
 
-}, [data])
-  const CONTENT_FIELD_ID = "cta";
+}, [data]);
 
-  
-
-  //const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-   sdk.field.setValue("hello world");
+  // const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
+  // sdk.field.setValue();
   // console.log(contentField);
   // console.log("hello world from entry editor");
   // const cma = useCMA();
   // If you only want to extend Contentful's default editing experience
   // reuse Contentful's editor components
   // -> https://www.contentful.com/developers/docs/extensibility/field-editors/
-  console.log("data here", data)
-  return (
-    <>
-    {/* {splitExp && splitExp.length && splitExp.map((obj, i) => {
-      return (
-      <div key={i}>
-        {obj.name}
-      </div>
-      )
-    })} */}
-<Paragraph>{splitExp && splitExp?.[0]?.name}</Paragraph>
-
-    <SplitExperiments
-    experimnent={splitExp && splitExp?.[0]?.name}
-    
-    />
-    
-    </>
-  );
+  console.log("data here", data);
+  return <Paragraph>Hello Entry Field Component (AppId: {sdk.ids.app})</Paragraph>;
 };
 
 export default Field;

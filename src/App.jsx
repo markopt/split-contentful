@@ -20,17 +20,16 @@ const ComponentLocationSettings = {
 };
 
 const App = () => {
-  //const sdk = useSDK();
-  // console.log('sdk location', sdk.location);
-  // const Component = useMemo(() => {
-  //   for (const [location, component] of Object.entries(ComponentLocationSettings)) {
-  //     if (sdk.location.is(location)) {
-  //       return component;
-  //     }
-  //   }
-  // }, [sdk.location]);
-
-  return <Field />
+  const sdk = useSDK();
+  console.log('sdk location', sdk.location);
+  const Component = useMemo(() => {
+    for (const [location, component] of Object.entries(ComponentLocationSettings)) {
+      if (sdk.location.is(location)) {
+        return component;
+      }
+    }
+  }, [sdk.location]);
+  return Component ? <Component /> : null;
 };
 
 export default App;
