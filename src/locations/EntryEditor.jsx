@@ -20,42 +20,6 @@ const Entry = () => {
  // const experiment = useState(contentField.getValue());
 
 
-
-  // const [ctaText, setCtaText] = useState(contentField.getValue());
-
-
-
-  // Listen for onChange events and update the value
-  // useEffect(async() => {
-  //   if (contentField) {
-  //     await sdk.field.setValue("hello world")
-  //   } 
-  // }, [contentField]);
-
-  // need to invoke split-client to pull in tagged experiments for use in dropdown
-  // const experimentList = Object.keys(experiments).map((feature) => {
-  //   return (
-  //     <FeatureList
-  //       name={feature.name}
-  //       // feature={feature as AIFeature}
-  //       // isSaving={isSaving}
-  //       // onSaving={handleSaving}
-  //     />
-  //   );
-  // });
-
-  // const readingTime = (text) => {
-  //   const wordCount = text.split(' ').length;
-  //   const minutes = Math.ceil(wordCount / WORDS_PER_MINUTE);
-  //   return {
-  //     words: wordCount,
-  //     text: `${minutes} min read`,
-  //   };
-  // };
-
-  // Calculate the metrics based on the new value
-  // const stats = readingTime(blogText || '');
-
   return <Paragraph>Hello Cole Man (AppId: {sdk.ids.app})</Paragraph>;
 };
 

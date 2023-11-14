@@ -21,24 +21,8 @@ const SplitExperiments = ({experimnent}) => {
   console.log("exp error: ", error)
   console.log("exp isloading: ", isLoading)
 
-// useEffect(() => {
-//   if (data && data.length && data[0]?.name) { 
-//       setSplitExp(data)
-//   }
-
-// }, [data])
   const CONTENT_FIELD_ID = "cta";
-
   
-
-  //const contentField = sdk.entry.fields[CONTENT_FIELD_ID];
-  // sdk.field.setValue("hello world");
-  // console.log(contentField);
-  // console.log("hello world from entry editor");
-  // const cma = useCMA();
-  // If you only want to extend Contentful's default editing experience
-  // reuse Contentful's editor components
-  // -> https://www.contentful.com/developers/docs/extensibility/field-editors/
   console.log("data here", data)
   return (
     <>
